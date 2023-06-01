@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+   <meta charset="UTF-8">
+   <title>Chat Application</title>
+</head>
+<body>
+   <h1>Chat Application</h1>
+   
+   <div>
+       <h2>Chat History</h2>
+       <ul id="chatMessages">
+           <!-- Chat messages will be dynamically added here -->
+       </ul>
+   </div>
+   
+   <form id="chatForm" onsubmit="sendMessage(event)">
+       <input type="text" id="sender" placeholder="Your name" required />
+       <input type="text" id="content" placeholder="Message content" required />
+       <button type="submit">Send</button>
+   </form>
+
+   <script src="/webjars/sockjs-client/sockjs.min.js"></script>
+   <script src="/webjars/stomp-websocket/stomp.min.js"></script>
+   <script th:inline="javascript">
+       var socket = new SockJS('/chat');
+       var stompClient = Stomp.over(socket);
+
+       stompClient.connect({}, function (frame) {
+           stompClient.subscribe('/topic/messages', function (response) {
+               var message = JSON.parse(response.body);
+               addMessage(message.sender, message.content);
+           });
+       });
+
+       function sendMessage(event) {
+           event.preventDefault();
+           var sender = document.getElementById('sender').value;
+           var content = document.getElementById('content').value;
+
+           stompClient.send("/app/chat/send", {}, JSON.stringify({
+               'sender': sender,
+               'content': content
+           }));
+
+           document.getElementById('content').value = '';
+       }
+
+       function addMessage(sender, content) {
+           var message = document.createElement('li');
+           message.textContent = sender + ': ' + content;
+           document.getElementById('chatMessages').appendChild(message);
+       }
+   </script>
+</body>
+</html>

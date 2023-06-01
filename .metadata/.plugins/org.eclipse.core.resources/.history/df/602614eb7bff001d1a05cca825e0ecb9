@@ -1,0 +1,9 @@
+package com.awslambda;
+
+public class HelloLambda {
+
+	public String Hello() {
+		
+		return "Hello world";
+	}
+}

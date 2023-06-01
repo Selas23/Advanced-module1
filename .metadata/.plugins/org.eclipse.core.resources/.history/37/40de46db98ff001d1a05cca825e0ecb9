@@ -1,0 +1,4 @@
+
+server.port=8094
+app.server.name=profile
+app.server.detail=profile
