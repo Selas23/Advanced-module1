@@ -1,0 +1,8 @@
+.my-navbar {
+    /* max-width: 800px;  */
+    /* Set your desired maximum width */
+    max-width: fit-content;
+    /* margin: 0 auto; */
+     /* Center the navbar horizontally */
+     margin-left: 0%;
+  }

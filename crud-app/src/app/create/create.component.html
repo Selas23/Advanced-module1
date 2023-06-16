@@ -1,0 +1,29 @@
+<h3>Save a Product</h3>
+<form (ngSubmit)="onSubmit()">
+    <!-- <div class="form group">
+        <label for="">productid</label>
+        <input type="text" class="form-control" id="name"
+        [{ngModel}]="product.productid" name="name">
+    </div> -->
+    <div class="form-group">
+        <label for="">Name</label>
+        <input type="text" class="form-control" id="name"
+        [(ngModel)]="product.name" name="name">
+    </div>
+    <div class="form-group">
+        <label for="">description</label>
+        <input type="text" class="form-control" id="name"
+        [(ngModel)]="product.description" name="name">
+    </div>
+    <div class="form-group">
+        <label for="">price</label>
+        <input type="text" class="form-control" id="name"
+        [(ngModel)]="product.price" name="name">
+    </div>
+    <div class="form-group">
+        <label for="">Quantity</label>
+        <input type="text" class="form-control" id="name"
+        [(ngModel)]="product.qty" name="name">
+    </div>
+    <button class="btn btn-success" type="submit">Submit</button>
+</form>

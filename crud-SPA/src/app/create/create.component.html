@@ -1,0 +1,78 @@
+<!-- <h2>Save a Product</h2>
+
+<form [formGroup]="createProductForm" (ngSubmit)="onSubmit()">
+  <div class="form-group">
+    <label for="name">Name</label>
+    <input type="text" class="form-control" id="name" formControlName="name">
+    <div *ngIf="createProductForm.get('name').invalid && createProductForm.get('name').touched" class="text-danger">
+      <div *ngIf="createProductForm.get('name').errors.required">Name is required</div>
+      <div *ngIf="createProductForm.get('name').errors.minlength">Name should have at least 2 characters</div>
+      <div *ngIf="createProductForm.get('name').errors.maxlength">Name should have at most 50 characters</div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="description">Description</label>
+    <input type="text" class="form-control" id="description" formControlName="description">
+    <div *ngIf="createProductForm.get('description').invalid && createProductForm.get('description').touched"
+      class="text-danger">
+      Description is required
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="price">Price</label>
+    <input type="number" class="form-control" id="price" formControlName="price">
+    <div *ngIf="createProductForm.get('price').invalid && createProductForm.get('price').touched" class="text-danger">
+      Price is required
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="qty">Quantity</label>
+    <input type="number" class="form-control" id="qty" formControlName="qty">
+    <div *ngIf="createProductForm.get('qty').invalid && createProductForm.get('qty').touched" class="text-danger">
+      Quantity is required
+    </div>
+  </div>
+
+  <button class="btn btn-outline-success my-2 my-sm-0" type="submit" [disabled]="createProductForm.invalid">
+    Submit
+  </button>
+</form>
+ -->
+
+
+
+
+
+
+
+
+
+<br>
+<h2>Create a Product</h2><br>
+<form (ngSubmit)="onSubmit()" #createProductForm="ngForm" >
+        <div class="form-group">
+        <label for="">Name</label>
+
+              <input type="text" class="form-control" id="name"
+        [(ngModel)]="product.name" name="name">
+    </div>
+    <div class="form-group">
+        <label for="">description</label>
+        <input type="text" class="form-control" id="name"
+        [(ngModel)]="product.description" name="name">
+    </div>
+    <div class="form-group">
+        <label for="">price</label>
+        <input type="text" class="form-control" id="name"
+        [(ngModel)]="product.price" name="name">
+    </div>
+    <div class="form-group">
+        <label for="">Quantity</label>
+        <input type="text" class="form-control" id="name"
+        [(ngModel)]="product.qty" name="name">
+    </div>
+    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Submit</button>
+</form>
